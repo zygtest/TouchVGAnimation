@@ -1,0 +1,6 @@
+[submodule "thirdparty/Shape"]
+	path = thirdparty/Shape
+	url = http://git.oschina.net/rhcad/TouchVGShape.git
+[submodule "thirdparty/MonkVG"]
+	path = thirdparty/MonkVG
+	url = http://git.oschina.net/rhcad/MonkVG.git

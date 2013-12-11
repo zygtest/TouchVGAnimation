@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">TouchOpenVG</string>
+    <string name="title_activity_main">TouchOpenVG</string>
+    <string name="title_activity_dummy">TouchVG Dummy View</string>
+
+</resources>

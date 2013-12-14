@@ -6,7 +6,6 @@
 #define TOUCHVG_CANVASADAPTER_OPENVG_H
 
 #include "gicanvas.h"
-#include "openvg.h"
 
 //! GiCanvas adapter using OpenVG.
 /*! \ingroup GRAPH_INTERFACE
@@ -44,18 +43,8 @@ public:
     bool beginShape(int type, int sid, int version, float x, float y, float w, float h);
     
 private:
-    VGPaint		_stroke;
-    VGPaint		_fill;
-    VGbitfield  _paintModes;
-    bool        _autosave;
-    
-    class PathCache;
-    PathCache*  _paths;
-    VGPath      _path;
-    bool        _needBuildPath;
-    
-    class PaintCache;
-    PaintCache* _paints;
+    struct Impl;
+    Impl*   im;
 };
 
 #endif // TOUCHVG_CANVASADAPTER_OPENVG_H

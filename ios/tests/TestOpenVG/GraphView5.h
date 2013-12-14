@@ -14,5 +14,6 @@ class TestOpenVGCanvas;
 
 - (id)initWithFrame:(CGRect)frame withFlags:(int)t;
 - (void)save;
+- (void)render;
 
 @end

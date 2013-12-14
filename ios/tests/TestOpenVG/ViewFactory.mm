@@ -3,6 +3,7 @@
 
 #import "GraphView5.h"
 #import "LargeView5.h"
+#import "PlayerView1.h"
 #import "ARCMacro.h"
 
 static UIViewController *_tmpController = nil;
@@ -45,7 +46,11 @@ static void addView5(NSMutableArray *arr, NSUInteger &i, NSUInteger index,
     GraphView5 *view = nil;
     
     if (!arr && index == i++) {
-        view = [[GraphView5 alloc]initWithFrame:frame withFlags:flags];
+        if (flags & 0x40000) {
+            view = [[PlayerView1 alloc]initWithFrame:frame withFlags:flags];
+        } else {
+            view = [[GraphView5 alloc]initWithFrame:frame withFlags:flags];
+        }
     }
     addView(arr, title, view);
     [view RELEASE];
@@ -66,6 +71,9 @@ static void addLargeView5(NSMutableArray *arr, NSUInteger &i, NSUInteger index,
 static void gatherTestView(NSMutableArray *arr, NSUInteger index, CGRect frame)
 {
     NSUInteger i = 0;
+    
+    addView5(arr, i, index, @"PlayerView1", 0x40000, frame);
+    addLargeView5(arr, i, index, @"PlayerView1 in large view", 0x40000, frame);
     
     addView5(arr, i, index, @"testRect", 0x01, frame);
     addView5(arr, i, index, @"testLine", 0x02, frame);

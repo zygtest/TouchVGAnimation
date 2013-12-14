@@ -21,8 +21,6 @@ public:
     void endPaint();
     CGContextRef context();
     
-    static int getScreenDpi();
-    
     static const float* const LINEDASH[];     //!< Dash pattern, 0..4
     static float colorPart(int argb, int byteOrder);
     

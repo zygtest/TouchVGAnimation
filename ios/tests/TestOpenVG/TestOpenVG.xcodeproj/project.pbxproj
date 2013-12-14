@@ -10,9 +10,13 @@
 		AE001EA81852815C00B4799D /* GiOpenVGCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE001EA71852815C00B4799D /* GiOpenVGCanvas.cpp */; };
 		AE08F9E81857FEFD00F41C1E /* testvgcanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE08F9E71857FEFD00F41C1E /* testvgcanvas.cpp */; };
 		AE08F9F51858015B00F41C1E /* libMonkVG_iOS_OpenGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE08F9F21858010E00F41C1E /* libMonkVG_iOS_OpenGL.a */; };
+		AE4842A3185A742F00264522 /* PlayerView1.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4842A2185A742F00264522 /* PlayerView1.mm */; };
 		AE490F1F185721EA004F70CC /* testcanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE490F1E185721EA004F70CC /* testcanvas.cpp */; };
 		AE4E6F0516129337006CAA5C /* GraphView5.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4E6F0316129337006CAA5C /* GraphView5.mm */; };
 		AE4E6F0616129337006CAA5C /* ViewFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4E6F0416129337006CAA5C /* ViewFactory.mm */; };
+		AE66F609185A99F800A22FB2 /* libTouchVGShape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE66F606185A99E200A22FB2 /* libTouchVGShape.a */; };
+		AE66F60B185A9B3A00A22FB2 /* playshapes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE66F60A185A9B3A00A22FB2 /* playshapes.cpp */; };
+		AE66F620185AB43800A22FB2 /* GiDpiUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE66F61F185AB43800A22FB2 /* GiDpiUtil.mm */; };
 		AE6800DD1855A29D00DB6CF6 /* TouchVG.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE6800DC1855A29D00DB6CF6 /* TouchVG.bundle */; };
 		AE815F351718EDCB006BC607 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE815F341718EDCB006BC607 /* QuartzCore.framework */; };
 		AEADC21F16EB570800484962 /* LargeView5.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEADC21E16EB570800484962 /* LargeView5.mm */; };
@@ -44,13 +48,27 @@
 			remoteGlobalIDString = FAE282A8121A08BB00823BCB;
 			remoteInfo = "MonkVG-iOS-OpenGL";
 		};
+		AE66F605185A99E200A22FB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE66F601185A99E200A22FB2 /* TouchVGShape.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AE490E54185715D9004F70CC;
+			remoteInfo = TouchVGShape;
+		};
+		AE66F607185A99F200A22FB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE66F601185A99E200A22FB2 /* TouchVGShape.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AE490E53185715D9004F70CC;
+			remoteInfo = TouchVGShape;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE001EA61852814B00B4799D /* GiOpenVGCanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GiOpenVGCanvas.h; path = ../../../core/inc/glcanvas/GiOpenVGCanvas.h; sourceTree = "<group>"; };
+		AE001EA61852814B00B4799D /* GiOpenVGCanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GiOpenVGCanvas.h; path = ../../../core/include/glcanvas/GiOpenVGCanvas.h; sourceTree = "<group>"; };
 		AE001EA71852815C00B4799D /* GiOpenVGCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GiOpenVGCanvas.cpp; path = ../../../core/src/glcanvas/GiOpenVGCanvas.cpp; sourceTree = "<group>"; };
 		AE001EAA1852830600B4799D /* ARCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARCMacro.h; path = ../../view/include/ARCMacro.h; sourceTree = "<group>"; };
-		AE08F9E61857FEF000F41C1E /* testvgcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testvgcanvas.h; path = ../../../core/inc/glcanvas/testvgcanvas.h; sourceTree = "<group>"; };
+		AE08F9E61857FEF000F41C1E /* testvgcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testvgcanvas.h; path = ../../../core/include/glcanvas/testvgcanvas.h; sourceTree = "<group>"; };
 		AE08F9E71857FEFD00F41C1E /* testvgcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testvgcanvas.cpp; path = ../../../core/src/glcanvas/testvgcanvas.cpp; sourceTree = "<group>"; };
 		AE08F9E91857FF1700F41C1E /* openvg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = openvg.h; path = ../../../thirdparty/MonkVG/include/MonkVG/openvg.h; sourceTree = "<group>"; };
 		AE08F9EA1857FF1700F41C1E /* vgext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vgext.h; path = ../../../thirdparty/MonkVG/include/MonkVG/vgext.h; sourceTree = "<group>"; };
@@ -58,12 +76,18 @@
 		AE08F9EC1857FF1700F41C1E /* vgu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vgu.h; path = ../../../thirdparty/MonkVG/include/MonkVG/vgu.h; sourceTree = "<group>"; };
 		AE08F9ED1858010E00F41C1E /* MonkVG-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "MonkVG-iOS.xcodeproj"; path = "../../../thirdparty/MonkVG/projects/MonkVG-iOS/MonkVG-iOS.xcodeproj"; sourceTree = "<group>"; };
 		AE2F18EB18429B7D000981AD /* TestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
-		AE490F1B185721CB004F70CC /* gicanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gicanvas.h; path = ../../../thirdparty/Shape/core/inc/canvas/gicanvas.h; sourceTree = "<group>"; };
-		AE490F1C185721DA004F70CC /* testcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testcanvas.h; path = ../../../thirdparty/Shape/core/inc/test/testcanvas.h; sourceTree = "<group>"; };
-		AE490F1E185721EA004F70CC /* testcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testcanvas.cpp; path = ../../../thirdparty/Shape/core/src/test/testcanvas.cpp; sourceTree = "<group>"; };
+		AE4842A1185A742F00264522 /* PlayerView1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView1.h; sourceTree = "<group>"; };
+		AE4842A2185A742F00264522 /* PlayerView1.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView1.mm; sourceTree = "<group>"; };
+		AE490F1B185721CB004F70CC /* gicanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gicanvas.h; path = ../../../thirdparty/TouchVGShape/core/include/canvas/gicanvas.h; sourceTree = "<group>"; };
+		AE490F1C185721DA004F70CC /* testcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testcanvas.h; path = ../../../thirdparty/TouchVGShape/core/include/test/testcanvas.h; sourceTree = "<group>"; };
+		AE490F1E185721EA004F70CC /* testcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testcanvas.cpp; path = ../../../thirdparty/TouchVGShape/core/src/test/testcanvas.cpp; sourceTree = "<group>"; };
 		AE4E6F0216129337006CAA5C /* GraphView5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView5.h; sourceTree = "<group>"; };
 		AE4E6F0316129337006CAA5C /* GraphView5.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphView5.mm; sourceTree = "<group>"; };
 		AE4E6F0416129337006CAA5C /* ViewFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewFactory.mm; sourceTree = "<group>"; };
+		AE66F601185A99E200A22FB2 /* TouchVGShape.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TouchVGShape.xcodeproj; path = ../../../thirdparty/TouchVGShape/ios/TouchVGShape.xcodeproj; sourceTree = "<group>"; };
+		AE66F60A185A9B3A00A22FB2 /* playshapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = playshapes.cpp; path = ../../../core/src/record/playshapes.cpp; sourceTree = "<group>"; };
+		AE66F60C185A9B4400A22FB2 /* playshapes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = playshapes.h; path = ../../../core/include/record/playshapes.h; sourceTree = "<group>"; };
+		AE66F61F185AB43800A22FB2 /* GiDpiUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GiDpiUtil.mm; path = ../../view/src/GiDpiUtil.mm; sourceTree = "<group>"; };
 		AE6800DC1855A29D00DB6CF6 /* TouchVG.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TouchVG.bundle; sourceTree = "<group>"; };
 		AE815F341718EDCB006BC607 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AEADC21D16EB570800484962 /* LargeView5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeView5.h; sourceTree = "<group>"; };
@@ -93,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE66F609185A99F800A22FB2 /* libTouchVGShape.a in Frameworks */,
 				AE08F9F51858015B00F41C1E /* libMonkVG_iOS_OpenGL.a in Frameworks */,
 				AEFA4A551850213D008A9E3B /* OpenGLES.framework in Frameworks */,
 				AE815F351718EDCB006BC607 /* QuartzCore.framework in Frameworks */,
@@ -114,7 +139,7 @@
 				AE08F9EC1857FF1700F41C1E /* vgu.h */,
 			);
 			name = openvg;
-			path = ../../../core/inc/openvg;
+			path = ../../../core/include/openvg;
 			sourceTree = "<group>";
 		};
 		AE0762F3160AABE000518207 /* canvas */ = {
@@ -127,6 +152,7 @@
 				AE490F1E185721EA004F70CC /* testcanvas.cpp */,
 				AE001EA61852814B00B4799D /* GiOpenVGCanvas.h */,
 				AE001EA71852815C00B4799D /* GiOpenVGCanvas.cpp */,
+				AE66F61F185AB43800A22FB2 /* GiDpiUtil.mm */,
 				AE001EAB1852832800B4799D /* openvg */,
 			);
 			name = canvas;
@@ -142,6 +168,7 @@
 				AE4E6F0216129337006CAA5C /* GraphView5.h */,
 				AE4E6F0316129337006CAA5C /* GraphView5.mm */,
 				AE4E6F0416129337006CAA5C /* ViewFactory.mm */,
+				AE66F619185AB0EF00A22FB2 /* Play */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -154,6 +181,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		AE66F602185A99E200A22FB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE66F606185A99E200A22FB2 /* libTouchVGShape.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE66F619185AB0EF00A22FB2 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				AE4842A1185A742F00264522 /* PlayerView1.h */,
+				AE4842A2185A742F00264522 /* PlayerView1.mm */,
+				AE66F60C185A9B4400A22FB2 /* playshapes.h */,
+				AE66F60A185A9B3A00A22FB2 /* playshapes.cpp */,
+			);
+			name = Play;
+			sourceTree = "<group>";
+		};
 		AEF2D51B160964BA00DDB7F2 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +209,7 @@
 				AEF2D56C1609B67200DDB7F2 /* Resources */,
 				AEF2D529160964BA00DDB7F2 /* Frameworks */,
 				AEF2D527160964BA00DDB7F2 /* Products */,
+				AE66F601185A99E200A22FB2 /* TouchVGShape.xcodeproj */,
 				AE08F9ED1858010E00F41C1E /* MonkVG-iOS.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -239,6 +286,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				AE66F608185A99F200A22FB2 /* PBXTargetDependency */,
 				AE08F9F41858012800F41C1E /* PBXTargetDependency */,
 			);
 			name = TestOpenVG;
@@ -270,6 +318,10 @@
 					ProductGroup = AE08F9EE1858010E00F41C1E /* Products */;
 					ProjectRef = AE08F9ED1858010E00F41C1E /* MonkVG-iOS.xcodeproj */;
 				},
+				{
+					ProductGroup = AE66F602185A99E200A22FB2 /* Products */;
+					ProjectRef = AE66F601185A99E200A22FB2 /* TouchVGShape.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -284,6 +336,13 @@
 			fileType = archive.ar;
 			path = libMonkVG_iOS_OpenGL.a;
 			remoteRef = AE08F9F11858010E00F41C1E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AE66F606185A99E200A22FB2 /* libTouchVGShape.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTouchVGShape.a;
+			remoteRef = AE66F605185A99E200A22FB2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -309,12 +368,15 @@
 				AEF2D53B160964BA00DDB7F2 /* AppDelegate.m in Sources */,
 				AEF2D53E160964BA00DDB7F2 /* MasterViewController.mm in Sources */,
 				AE001EA81852815C00B4799D /* GiOpenVGCanvas.cpp in Sources */,
+				AE66F620185AB43800A22FB2 /* GiDpiUtil.mm in Sources */,
 				AE490F1F185721EA004F70CC /* testcanvas.cpp in Sources */,
 				AEF2D541160964BA00DDB7F2 /* DetailViewController.mm in Sources */,
 				AEF2D5B01609BF7D00DDB7F2 /* main.m in Sources */,
 				AE08F9E81857FEFD00F41C1E /* testvgcanvas.cpp in Sources */,
 				AE4E6F0516129337006CAA5C /* GraphView5.mm in Sources */,
 				AE4E6F0616129337006CAA5C /* ViewFactory.mm in Sources */,
+				AE4842A3185A742F00264522 /* PlayerView1.mm in Sources */,
+				AE66F60B185A9B3A00A22FB2 /* playshapes.cpp in Sources */,
 				AEFA4A621850525F008A9E3B /* EAGLView.m in Sources */,
 				AEADC21F16EB570800484962 /* LargeView5.mm in Sources */,
 			);
@@ -327,6 +389,11 @@
 			isa = PBXTargetDependency;
 			name = "MonkVG-iOS-OpenGL";
 			targetProxy = AE08F9F31858012800F41C1E /* PBXContainerItemProxy */;
+		};
+		AE66F608185A99F200A22FB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TouchVGShape;
+			targetProxy = AE66F607185A99F200A22FB2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -363,7 +430,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"../../../core/include/**",
-					"../../include/**",
+					"../../../thirdparty/TouchVGShape/core/include/**",
 					../../../thirdparty/MonkVG/include/MonkVG,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -400,7 +467,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"../../../core/include/**",
-					"../../include/**",
+					"../../../thirdparty/TouchVGShape/core/include/**",
 					../../../thirdparty/MonkVG/include/MonkVG,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;

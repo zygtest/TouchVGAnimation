@@ -5,6 +5,8 @@
 #ifndef TOUCHVG_TEST_OPENVGCANVAS_H
 #define TOUCHVG_TEST_OPENVGCANVAS_H
 
+class GiCanvas;
+
 //! The testing class for GiOpenVGCanvas.
 /*! \ingroup GRAPH_INTERFACE
  */
@@ -18,8 +20,12 @@ public:
     int getWidth();
     int getHeight();
     void prepareToDraw(bool dynzoom, int mstime);
+    
     void draw(int bits, int n, bool pathCached = true);
     void dyndraw(float x, float y);
+    
+    GiCanvas* beginPaint(bool pathCached) const;
+    void endPaint();
     
 private:
     struct Impl;

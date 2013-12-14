@@ -13,9 +13,39 @@
 
 %{
 #include "testvgcanvas.h"
+#include "mgshapedoc.h"
+#include "mglayer.h"
+#include "mgstorage.h"
+#include "gicanvas.h"
+#include "mgbasicspreg.h"
+#include "mgspfactory.h"
+#include "playshapes.h"
 %}
 
 %include "testvgcanvas.h"
+
+%include "mgtol.h"
+%include "mgvec.h"
+%include "mgpnt.h"
+%include "mgmat.h"
+%include "mgbox.h"
+
+%include "gixform.h"
+%include "gipath.h"
+%include "gicolor.h"
+%include "gicontxt.h"
+%include "gigraph.h"
+%include "gicanvas.h"
+%include "mgobject.h"
+%include "mgshape.h"
+%include "mgshapes.h"
+%include "mgshapedoc.h"
+%include "mgspfactory.h"
+%include "mglayer.h"
+%include "mgstorage.h"
+%include "mgbasicspreg.h"
+
+%include "playshapes.h"
 
 #ifdef SWIGJAVA
 %{

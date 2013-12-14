@@ -3,6 +3,7 @@
 // Copyright (c) 2013, https://github.com/rhcad/touchvg
 
 #include "GiOpenVGCanvas.h"
+#include "openvg.h"
 #include "vgu.h"
 #include <vector>
 #include <map>
@@ -13,7 +14,7 @@ static const float patDashDot[]   = { 10, 2, 2, 2, 0 };
 static const float dashDotdot[]   = { 20, 2, 2, 2, 2, 2, 0 };
 static const float* const LINEDASH[] = { patDash, patDot, patDashDot, dashDotdot };
 
-class GiOpenVGCanvas::PathCache
+class PathCache
 {
     std::vector<VGPath> paths;
     unsigned            index;
@@ -53,7 +54,7 @@ public:
     }
 };
 
-class GiOpenVGCanvas::PaintCache
+class PaintCache
 {
     std::map<int, VGPaint> paints;
 public:
@@ -79,25 +80,71 @@ public:
     }
 };
 
-GiOpenVGCanvas::GiOpenVGCanvas() : _stroke(0), _fill(0), _paintModes(0), _path(0)
+struct GiOpenVGCanvas::Impl
 {
-    _paths = new PathCache();
-    _paints = new PaintCache();
+    typedef std::pair<PathCache*, int> PathsVersion;
+    typedef std::map<int, PathsVersion> ShapeMap;
+    ShapeMap    shapes;
+    
+    VGPaint		stroke;
+    VGPaint		fill;
+    VGbitfield  paintModes;
+    bool        autosave;
+    
+    VGPath      curpath;
+    PathCache*  paths;
+    PaintCache* paints;
+    bool        needBuildPath;
+    
+    Impl() : stroke(0), fill(0), paintModes(0), curpath(0), paths(0), paints(new PaintCache()) {}
+    ~Impl() {
+        clear();
+    }
+    PathCache* getPaths() {
+        if (!paths) {
+            paths = new PathCache();
+            paths->beginPaint(autosave);
+        }
+        return paths;
+    }
+    void clear() {
+        for (ShapeMap::iterator it = shapes.begin(); it != shapes.end(); ++it) {
+            if (paths == it->second.first)
+                paths = 0;
+            delete it->second.first;
+        }
+        shapes.clear();
+        
+        if (paths) {
+            delete paths;
+            paths = 0;
+        }
+        if (paints) {
+            delete paints;
+            paints = 0;
+        }
+    }
+};
+
+GiOpenVGCanvas::GiOpenVGCanvas()
+{
+    im = new Impl();
 }
 
 GiOpenVGCanvas::~GiOpenVGCanvas()
 {
-    delete _paths;
-    delete _paints;
+    delete im;
 }
 
 void GiOpenVGCanvas::beginPaint(bool autosave)
 {
-    _autosave = autosave;
-    if (!_paintModes) {
+    im->autosave = autosave;
+    if (!im->paintModes) {
         setPen(0xFF000000, 1, 0, 0);
     }
-    _paths->beginPaint(autosave);
+    if (im->paths) {
+        im->paths->beginPaint(autosave);
+    }
 }
 
 static VGfloat colorPart(int argb, int byteOrder)
@@ -112,17 +159,17 @@ void GiOpenVGCanvas::setPen(int argb, float width, int style, float phase)
         VGfloat fcolor[4] = { colorPart(argb, 2), colorPart(argb, 1), colorPart(argb, 0), alpha };
         
         if (alpha < 1e-3f) {
-            _paintModes &= ~VG_STROKE_PATH;
-            _stroke = 0;
+            im->paintModes &= ~VG_STROKE_PATH;
+            im->stroke = 0;
         }
         else {
             bool created;
-            _stroke = _paints->pick(created, argb);
+            im->stroke = im->paints->pick(created, argb);
             if (created) {
-                vgSetParameterfv(_stroke, VG_PAINT_COLOR, 4, &fcolor[0]);
+                vgSetParameterfv(im->stroke, VG_PAINT_COLOR, 4, &fcolor[0]);
             }
-            vgSetPaint(_stroke, VG_STROKE_PATH);
-            _paintModes |= VG_STROKE_PATH;
+            vgSetPaint(im->stroke, VG_STROKE_PATH);
+            im->paintModes |= VG_STROKE_PATH;
         }
     }
     if (width > 0) {
@@ -152,18 +199,18 @@ void GiOpenVGCanvas::setBrush(int argb, int style)
         VGfloat fcolor[4] = { colorPart(argb, 2), colorPart(argb, 1), colorPart(argb, 0), alpha };
         
         if (alpha < 1e-3f) {
-            _paintModes &= ~VG_FILL_PATH;
-            _fill = 0;
+            im->paintModes &= ~VG_FILL_PATH;
+            im->fill = 0;
         }
         else {
             bool created;
-            _fill = _paints->pick(created, argb);
+            im->fill = im->paints->pick(created, argb);
             if (created) {
-                vgSetParameterfv(_fill, VG_PAINT_COLOR, 4, &fcolor[0]);
+                vgSetParameterfv(im->fill, VG_PAINT_COLOR, 4, &fcolor[0]);
                 vgSeti(VG_FILL_RULE, VG_EVEN_ODD);
             }
-            vgSetPaint(_fill, VG_FILL_PATH);
-            _paintModes |= VG_FILL_PATH;
+            vgSetPaint(im->fill, VG_FILL_PATH);
+            im->paintModes |= VG_FILL_PATH;
         }
     }
 }
@@ -191,11 +238,11 @@ void GiOpenVGCanvas::clearRect(float x, float y, float w, float h)
 void GiOpenVGCanvas::drawRect(float x, float y, float w, float h, bool stroke, bool fill)
 {
     bool created;
-    VGPath p = _paths->pickPath(created);
+    VGPath p = im->getPaths()->pickPath(created);
     if (created) {
         vguRect(p, x, y, w, h);
     }
-    vgDrawPath(p, _paintModes & (stroke ? -1 : ~VG_STROKE_PATH) & (fill ? -1 : ~VG_FILL_PATH));
+    vgDrawPath(p, im->paintModes & (stroke ? -1 : ~VG_STROKE_PATH) & (fill ? -1 : ~VG_FILL_PATH));
 }
 
 bool GiOpenVGCanvas::clipRect(float x, float y, float w, float h)
@@ -206,81 +253,81 @@ bool GiOpenVGCanvas::clipRect(float x, float y, float w, float h)
 void GiOpenVGCanvas::drawLine(float x1, float y1, float x2, float y2)
 {
     bool created;
-    VGPath p = _paths->pickPath(created);
+    VGPath p = im->getPaths()->pickPath(created);
     if (created) {
         vguLine(p, x1, y1, x2, y2);
     }
-    vgDrawPath(p, _paintModes & ~VG_FILL_PATH);
+    vgDrawPath(p, im->paintModes & ~VG_FILL_PATH);
 }
 
 void GiOpenVGCanvas::drawEllipse(float x, float y, float w, float h, bool stroke, bool fill)
 {
     bool created;
-    VGPath p = _paths->pickPath(created);
+    VGPath p = im->getPaths()->pickPath(created);
     if (created) {
         vguEllipse(p, x + w / 2, y + h / 2, w, h);
     }
-    vgDrawPath(p, _paintModes & (stroke ? -1 : ~VG_STROKE_PATH) & (fill ? -1 : ~VG_FILL_PATH));
+    vgDrawPath(p, im->paintModes & (stroke ? -1 : ~VG_STROKE_PATH) & (fill ? -1 : ~VG_FILL_PATH));
 }
 
 void GiOpenVGCanvas::beginPath()
 {
-    _path = _paths->pickPath(_needBuildPath);
+    im->curpath = im->getPaths()->pickPath(im->needBuildPath);
 }
 
 void GiOpenVGCanvas::moveTo(float x, float y)
 {
-    if (_path && _needBuildPath) {
+    if (im->curpath && im->needBuildPath) {
         VGubyte seg = VG_MOVE_TO_ABS;
         VGfloat data[2] = { x, y };
         
-        vgAppendPathData(_path, 1, &seg, data);
+        vgAppendPathData(im->curpath, 1, &seg, data);
     }
 }
 
 void GiOpenVGCanvas::lineTo(float x, float y)
 {
-    if (_path && _needBuildPath) {
+    if (im->curpath && im->needBuildPath) {
         VGubyte seg = VG_LINE_TO_ABS;
         VGfloat data[2] = { x, y };
         
-        vgAppendPathData(_path, 1, &seg, data);
+        vgAppendPathData(im->curpath, 1, &seg, data);
     }
 }
 
 void GiOpenVGCanvas::bezierTo(float c1x, float c1y, float c2x, float c2y, float x, float y)
 {
-    if (_path && _needBuildPath) {
+    if (im->curpath && im->needBuildPath) {
         VGubyte seg = VG_CUBIC_TO_ABS;
         VGfloat data[6] = { c1x, c1y, c2x, c2y, x, y };
         
-        vgAppendPathData(_path, 1, &seg, data);
+        vgAppendPathData(im->curpath, 1, &seg, data);
     }
 }
 
 void GiOpenVGCanvas::quadTo(float cpx, float cpy, float x, float y)
 {
-    if (_path && _needBuildPath) {
+    if (im->curpath && im->needBuildPath) {
         VGubyte seg = VG_QUAD_TO_ABS;
         VGfloat data[4] = { cpx, cpy, x, y };
         
-        vgAppendPathData(_path, 1, &seg, data);
+        vgAppendPathData(im->curpath, 1, &seg, data);
     }
 }
 
 void GiOpenVGCanvas::closePath()
 {
-    if (_path && _needBuildPath) {
+    if (im->curpath && im->needBuildPath) {
         VGubyte seg = VG_CLOSE_PATH;
         VGfloat data = 0.0f;
         
-        vgAppendPathData(_path, 1, &seg, &data);
+        vgAppendPathData(im->curpath, 1, &seg, &data);
     }
 }
 
 void GiOpenVGCanvas::drawPath(bool stroke, bool fill)
 {
-    vgDrawPath(_path, _paintModes & (stroke ? -1 : ~VG_STROKE_PATH) & (fill ? -1 : ~VG_FILL_PATH));
+    vgDrawPath(im->curpath, im->paintModes & (stroke ? -1 : ~VG_STROKE_PATH) & (fill ? -1 : ~VG_FILL_PATH));
 }
 
 bool GiOpenVGCanvas::clipPath()

@@ -49,6 +49,17 @@ int TestOpenVGCanvas::getHeight()
     return _impl->height;
 }
 
+GiCanvas* TestOpenVGCanvas::beginPaint(bool pathCached) const
+{
+    _impl->canvas.beginPaint(pathCached);
+    return &_impl->canvas;
+}
+
+void TestOpenVGCanvas::endPaint()
+{
+    _impl->canvas.endPaint();
+}
+
 void TestOpenVGCanvas::prepareToDraw(bool dynzoom, int mstime)
 {
 	VGfloat clearColor[] = {1,1,1,1};
@@ -69,10 +80,12 @@ void TestOpenVGCanvas::prepareToDraw(bool dynzoom, int mstime)
 
 void TestOpenVGCanvas::draw(int bits, int n, bool pathCached)
 {
-    _impl->canvas.beginPaint(pathCached);
-    _impl->canvas.setPen(0, 3, 0, 0);
-    TestCanvas::test(&_impl->canvas, bits, n);
-    _impl->canvas.endPaint();
+    if (bits && n) {
+        _impl->canvas.beginPaint(pathCached);
+        _impl->canvas.setPen(0, 3, 0, 0);
+        TestCanvas::test(&_impl->canvas, bits, n);
+        _impl->canvas.endPaint();
+    }
 }
 
 void TestOpenVGCanvas::dyndraw(float x, float y)

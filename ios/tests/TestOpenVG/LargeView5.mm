@@ -3,6 +3,7 @@
 
 #import "LargeView5.h"
 #import "GraphView5.h"
+#import "PlayerView1.h"
 #import "ARCMacro.h"
 
 @implementation LargeView5
@@ -12,7 +13,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         float w = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ? 1024 : 2048;
-        if (t & 0x400) {    // testDynCurves
+        
+        if (t & 0x40000) {
+            _subview = [[PlayerView1 alloc]initWithFrame:CGRectMake(0, 0, w, w) withFlags:t];
+        }
+        else if (t & 0x400) {   // testDynCurves
             _subview = [[GraphView5 alloc]initWithFrame:CGRectMake(0, 0, w, w) withFlags:t];
         }
         else {

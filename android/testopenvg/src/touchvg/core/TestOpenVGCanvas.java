@@ -67,4 +67,13 @@ public class TestOpenVGCanvas {
     touchvgJNI.TestOpenVGCanvas_dyndraw(swigCPtr, this, x, y);
   }
 
+  public GiCanvas beginPaint(boolean pathCached) {
+    long cPtr = touchvgJNI.TestOpenVGCanvas_beginPaint(swigCPtr, this, pathCached);
+    return (cPtr == 0) ? null : new GiCanvas(cPtr, false);
+  }
+
+  public void endPaint() {
+    touchvgJNI.TestOpenVGCanvas_endPaint(swigCPtr, this);
+  }
+
 }

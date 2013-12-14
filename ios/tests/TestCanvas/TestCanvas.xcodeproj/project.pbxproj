@@ -28,9 +28,9 @@
 /* Begin PBXFileReference section */
 		AE001EA91852823A00B4799D /* ARCMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ARCMacro.h; path = ../../view/include/ARCMacro.h; sourceTree = "<group>"; };
 		AE2F18EB18429B7D000981AD /* TestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
-		AE490F1A185721BF004F70CC /* gicanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gicanvas.h; path = ../../../thirdparty/Shape/core/inc/canvas/gicanvas.h; sourceTree = "<group>"; };
-		AE490F1D185721E0004F70CC /* testcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testcanvas.h; path = ../../../thirdparty/Shape/core/inc/test/testcanvas.h; sourceTree = "<group>"; };
-		AE490F20185721F1004F70CC /* testcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testcanvas.cpp; path = ../../../thirdparty/Shape/core/src/test/testcanvas.cpp; sourceTree = "<group>"; };
+		AE490F1A185721BF004F70CC /* gicanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gicanvas.h; path = ../../../thirdparty/TouchVGShape/core/include/canvas/gicanvas.h; sourceTree = "<group>"; };
+		AE490F1D185721E0004F70CC /* testcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testcanvas.h; path = ../../../thirdparty/TouchVGShape/core/include/test/testcanvas.h; sourceTree = "<group>"; };
+		AE490F20185721F1004F70CC /* testcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testcanvas.cpp; path = ../../../thirdparty/TouchVGShape/core/src/test/testcanvas.cpp; sourceTree = "<group>"; };
 		AE4E6F0216129337006CAA5C /* GraphView3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView3.h; sourceTree = "<group>"; };
 		AE4E6F0316129337006CAA5C /* GraphView3.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphView3.mm; sourceTree = "<group>"; };
 		AE4E6F0416129337006CAA5C /* ViewFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewFactory.mm; sourceTree = "<group>"; };

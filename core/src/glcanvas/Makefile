@@ -5,10 +5,11 @@ OBJS        =$(SRCS:.cpp=.o)
 INSTALL_DIR ?=$(ROOTDIR)/build
 
 CPPFLAGS    += -Wall \
-               -I$(ROOTDIR)/core/inc/glcanvas \
+               -I$(ROOTDIR)/core/include/glcanvas \
+               -I$(ROOTDIR)/core/include/record \
                -I$(ROOTDIR)/thirdparty/MonkVG/include/MonkVG \
-               -I$(ROOTDIR)/thirdparty/Shape/core/inc/canvas \
-               -I$(ROOTDIR)/thirdparty/Shape/core/inc/test
+               -I$(ROOTDIR)/thirdparty/TouchVGShape/core/include/canvas \
+               -I$(ROOTDIR)/thirdparty/TouchVGShape/core/include/test
 
 all:        $(TARGET)
 $(TARGET):  $(OBJS)

@@ -16,14 +16,8 @@ int giGetScreenDpi();
 {
     [super DEALLOC];
     
-    if (_doc) {
-        _doc->release();
-        _doc = NULL;
-    }
-    if (_dynShapes) {
-        _dynShapes->release();
-        _dynShapes = NULL;
-    }
+    MgObject::release(_doc);
+    MgObject::release(_dynShapes);
     dispatch_release(_semaphore);
     delete _xform;
 }
@@ -58,12 +52,10 @@ int giGetScreenDpi();
     
     gs.beginPaint(_tester->beginPaint(true));
     _doc->draw(gs);
-    _tester->endPaint();
+    gs.endPaint();
     
     gs.beginPaint(_tester->beginPaint(false));
     _dynShapes->draw(gs);
-    _tester->endPaint();
-    
     gs.endPaint();
 }
 
@@ -95,11 +87,11 @@ int giGetScreenDpi();
                     dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
                     
                     if (res & MgPlayShapes::STATIC_CHANGED) {
-                        if (_doc) _doc->release();
+                        MgObject::release(_doc);
                         _doc = player.pickFrontDoc();
                     }
                     if (res & MgPlayShapes::DYNAMIC_CHANGED) {
-                        if (_dynShapes) _dynShapes->release();
+                        MgObject::release(_dynShapes);
                         _dynShapes = player.pickDynShapes();
                     }
                     [self play];

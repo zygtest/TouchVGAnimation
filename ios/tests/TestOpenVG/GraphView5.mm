@@ -47,6 +47,9 @@
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
+    bool dynzoom = (_flags & 0x10000) != 0;
+    _tester->prepareToDraw(dynzoom, (CACurrentMediaTime() - _startTime) * 1000);
+    
     [self render];
 	
     [self presentFramebuffer];
@@ -54,9 +57,6 @@
 
 - (void)render
 {
-    bool dynzoom = (_flags & 0x10000) != 0;
-    _tester->prepareToDraw(dynzoom, (CACurrentMediaTime() - _startTime) * 1000);
-    
     bool inScrollView = (_flags & 0x20000) != 0;
     bool pathCached = (_flags & 0x400) == 0;        // not save paths when testDynCurves
     _tester->draw(_flags, inScrollView ? 600 : 300, pathCached);

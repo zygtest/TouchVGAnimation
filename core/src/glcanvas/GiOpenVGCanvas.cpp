@@ -96,7 +96,7 @@ struct GiOpenVGCanvas::Impl
     PaintCache* paints;
     bool        needBuildPath;
     
-    Impl() : stroke(0), fill(0), paintModes(0), curpath(0), paths(0), paints(new PaintCache()) {}
+    Impl() : stroke(0), fill(0), paintModes(0), curpath(0), paths(0), paints(0) {}
     ~Impl() {
         clear();
     }
@@ -164,6 +164,8 @@ void GiOpenVGCanvas::setPen(int argb, float width, int style, float phase)
         }
         else {
             bool created;
+            if (!im->paints)
+                im->paints = new PaintCache();
             im->stroke = im->paints->pick(created, argb);
             if (created) {
                 vgSetParameterfv(im->stroke, VG_PAINT_COLOR, 4, &fcolor[0]);
@@ -204,6 +206,8 @@ void GiOpenVGCanvas::setBrush(int argb, int style)
         }
         else {
             bool created;
+            if (!im->paints)
+                im->paints = new PaintCache();
             im->fill = im->paints->pick(created, argb);
             if (created) {
                 vgSetParameterfv(im->fill, VG_PAINT_COLOR, 4, &fcolor[0]);
@@ -215,9 +219,33 @@ void GiOpenVGCanvas::setBrush(int argb, int style)
     }
 }
 
-bool GiOpenVGCanvas::beginShape(int type, int, int, float x, float y, float w, float h)
+bool GiOpenVGCanvas::beginShape(int, int sid, int version, float, float, float, float)
 {
+    if (im->autosave) {
+        PathCache* paths;
+        Impl::ShapeMap::iterator it = im->shapes.find(sid);
+        
+        if (it == im->shapes.end()) {
+            paths = new PathCache();
+            im->shapes[sid] = Impl::PathsVersion(paths, version);
+        }
+        else {
+            paths = it->second.first;
+            if (it->second.second != version)
+                paths->clear();
+        }
+        
+        if (im->paths)
+            delete im->paths;
+        im->paths = paths;
+    }
+    
     return true;
+}
+
+void GiOpenVGCanvas::endShape(int, int, float, float)
+{
+    im->paths = 0;
 }
 
 void GiOpenVGCanvas::saveClip()

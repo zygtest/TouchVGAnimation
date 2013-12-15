@@ -708,7 +708,7 @@ public class touchvgJNI {
   public final static native void delete_MgPlayShapes(long jarg1);
   public final static native boolean MgPlayShapes_loadFirstFile(long jarg1, MgPlayShapes jarg1_);
   public final static native int MgPlayShapes_loadNextFile(long jarg1, MgPlayShapes jarg1_, int jarg2);
-  public final static native void MgPlayShapes_copyXform(long jarg1, MgPlayShapes jarg1_, long jarg2, GiTransform jarg2_);
+  public final static native void MgPlayShapes_copyXformTo(long jarg1, MgPlayShapes jarg1_, long jarg2, GiTransform jarg2_);
   public final static native long MgPlayShapes_pickFrontDoc(long jarg1, MgPlayShapes jarg1_);
   public final static native long MgPlayShapes_pickDynShapes(long jarg1, MgPlayShapes jarg1_);
   public final static native long MgShape_SWIGUpcast(long jarg1);

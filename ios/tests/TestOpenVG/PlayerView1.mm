@@ -41,6 +41,14 @@ int giGetScreenDpi();
     _xform->setWndSize(self.bounds.size.width, self.bounds.size.height);
 }
 
+- (void)tearDown
+{
+    [super tearDown];
+    dispatch_semaphore_signal(_semaphore);
+    MgObject::release(_doc);
+    MgObject::release(_dynShapes);
+}
+
 - (void)startAnimation
 {
     // not use CADisplayLink
@@ -75,7 +83,7 @@ int giGetScreenDpi();
         MgPlayShapes player([path UTF8String], _xform);
         
         if (player.loadFirstFile()) {
-            player.copyXform(_xform);
+            player.copyXformTo(_xform);
             _doc = player.pickFrontDoc();
             _dynShapes = player.pickDynShapes();
             [self play];

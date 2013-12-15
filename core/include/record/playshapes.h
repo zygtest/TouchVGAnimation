@@ -24,7 +24,7 @@ public:
     bool loadFirstFile();
     int loadNextFile(int index);
     
-    void copyXform(GiTransform* xform);
+    void copyXformTo(GiTransform* xform);
     MgShapeDoc* pickFrontDoc();
     MgShapes* pickDynShapes();
     

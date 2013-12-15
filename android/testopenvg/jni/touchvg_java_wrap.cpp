@@ -12888,7 +12888,7 @@ SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_MgPlayShapes_1loadNextFile(
 }
 
 
-SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgPlayShapes_1copyXform(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgPlayShapes_1copyXformTo(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   MgPlayShapes *arg1 = (MgPlayShapes *) 0 ;
   GiTransform *arg2 = (GiTransform *) 0 ;
   
@@ -12898,7 +12898,7 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgPlayShapes_1copyXform(JNI
   (void)jarg2_;
   arg1 = *(MgPlayShapes **)&jarg1; 
   arg2 = *(GiTransform **)&jarg2; 
-  (arg1)->copyXform(arg2);
+  (arg1)->copyXformTo(arg2);
 }
 
 

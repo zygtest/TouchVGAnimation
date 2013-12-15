@@ -69,7 +69,7 @@ bool MgPlayShapes::loadFirstFile()
     return _im->frontDoc->loadAll(&_im->factory, s, &_im->xform);
 }
 
-void MgPlayShapes::copyXform(GiTransform* xform)
+void MgPlayShapes::copyXformTo(GiTransform* xform)
 {
     xform->copy(_im->xform);
 }

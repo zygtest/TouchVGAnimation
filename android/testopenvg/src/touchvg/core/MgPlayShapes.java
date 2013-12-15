@@ -47,8 +47,8 @@ public class MgPlayShapes {
     return touchvgJNI.MgPlayShapes_loadNextFile(swigCPtr, this, index);
   }
 
-  public void copyXform(GiTransform xform) {
-    touchvgJNI.MgPlayShapes_copyXform(swigCPtr, this, GiTransform.getCPtr(xform), xform);
+  public void copyXformTo(GiTransform xform) {
+    touchvgJNI.MgPlayShapes_copyXformTo(swigCPtr, this, GiTransform.getCPtr(xform), xform);
   }
 
   public MgShapeDoc pickFrontDoc() {

@@ -28,6 +28,8 @@ public class ViewFactory {
     public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
     
     static {
+        addItem("vgtest.testview.play.PlayView1", 0, "PlayView1");
+        
         addItem("vgtest.testview.canvas.GLSurfaceView1", 0x01, "testRect");
         addItem("vgtest.testview.canvas.GLSurfaceView1", 0x02, "testLine");
         addItem("vgtest.testview.canvas.GLSurfaceView1", 0x04, "testTextAt");

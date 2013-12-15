@@ -486,6 +486,9 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_drawPath__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiContext jarg2_, long jarg3, GiPath jarg3_, boolean jarg4);
   public final static native boolean GiGraphics_drawHandle__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3, boolean jarg4);
   public final static native boolean GiGraphics_drawHandle__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, Point2d jarg2_, int jarg3);
+  public final static native boolean GiGraphics_beginPaint__SWIG_0(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_, long jarg3, RECT_2D jarg3_);
+  public final static native boolean GiGraphics_beginPaint__SWIG_1(long jarg1, GiGraphics jarg1_, long jarg2, GiCanvas jarg2_);
+  public final static native void GiGraphics_endPaint(long jarg1, GiGraphics jarg1_);
   public final static native long new_GiSaveClipBox(long jarg1, GiGraphics jarg1_, long jarg2, Box2d jarg2_);
   public final static native void delete_GiSaveClipBox(long jarg1);
   public final static native boolean GiSaveClipBox_succeed(long jarg1, GiSaveClipBox jarg1_);

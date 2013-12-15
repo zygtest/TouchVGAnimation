@@ -39,6 +39,12 @@ public class GLSurfaceView1 extends GLSurfaceView {
             }
         });
     }
+    
+    protected void render(TestOpenVGCanvas tester) {
+        boolean pathCached = (mCreateFlags & 0x400) == 0;
+        mTester.draw(mCreateFlags, 300, pathCached);
+        mTester.dyndraw(mLastX, mLastY);
+    }
 
     private class TestRenderer implements GLSurfaceView.Renderer {
 
@@ -61,11 +67,8 @@ public class GLSurfaceView1 extends GLSurfaceView {
                 gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
                 
                 boolean dynzoom = (mCreateFlags & 0x10000) != 0;
-                boolean pathCached = (mCreateFlags & 0x400) == 0;
-
                 mTester.prepareToDraw(dynzoom, (int)(System.currentTimeMillis() - mStartTime));
-                mTester.draw(mCreateFlags, 300, pathCached);
-                mTester.dyndraw(mLastX, mLastY);
+                render(mTester);
             }
         }
     }

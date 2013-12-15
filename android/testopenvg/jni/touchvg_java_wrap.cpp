@@ -9198,6 +9198,60 @@ SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1drawHandle_
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1beginPaint_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiCanvas *arg2 = (GiCanvas *) 0 ;
+  RECT_2D *arg3 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  (void)jarg3_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiCanvas **)&jarg2; 
+  arg3 = *(RECT_2D **)&jarg3;
+  if (!arg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "RECT_2D const & reference is null");
+    return 0;
+  } 
+  result = (bool)(arg1)->beginPaint(arg2,(RECT_2D const &)*arg3);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1beginPaint_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jboolean jresult = 0 ;
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  GiCanvas *arg2 = (GiCanvas *) 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  arg2 = *(GiCanvas **)&jarg2; 
+  result = (bool)(arg1)->beginPaint(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_GiGraphics_1endPaint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  GiGraphics *arg1 = (GiGraphics *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(GiGraphics **)&jarg1; 
+  (arg1)->endPaint();
+}
+
+
 SWIGEXPORT jlong JNICALL Java_touchvg_core_touchvgJNI_new_1GiSaveClipBox(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jlong jresult = 0 ;
   GiGraphics *arg1 = (GiGraphics *) 0 ;

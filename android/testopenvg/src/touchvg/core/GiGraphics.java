@@ -275,4 +275,16 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_drawHandle__SWIG_1(swigCPtr, this, Point2d.getCPtr(pnt), pnt, type);
   }
 
+  public boolean beginPaint(GiCanvas canvas, RECT_2D clipBox) {
+    return touchvgJNI.GiGraphics_beginPaint__SWIG_0(swigCPtr, this, GiCanvas.getCPtr(canvas), canvas, RECT_2D.getCPtr(clipBox), clipBox);
+  }
+
+  public boolean beginPaint(GiCanvas canvas) {
+    return touchvgJNI.GiGraphics_beginPaint__SWIG_1(swigCPtr, this, GiCanvas.getCPtr(canvas), canvas);
+  }
+
+  public void endPaint() {
+    touchvgJNI.GiGraphics_endPaint(swigCPtr, this);
+  }
+
 }

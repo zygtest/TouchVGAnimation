@@ -21,6 +21,7 @@ public:
     MgPlayShapes(const char* path, GiTransform* xform);
     ~MgPlayShapes();
     
+    void close();
     bool loadFirstFile();
     int loadNextFile(int index);
     

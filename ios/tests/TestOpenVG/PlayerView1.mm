@@ -112,6 +112,7 @@ int giGetScreenDpi();
                 }
             }
         }
+        player.close();
         dispatch_semaphore_signal(_semaphore);
     });
 }

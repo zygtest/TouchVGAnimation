@@ -15,7 +15,7 @@ import android.view.View;
 
 public class GLSurfaceView1 extends GLSurfaceView {
     private TestOpenVGCanvas mTester;
-    private int mCreateFlags;
+    protected int mCreateFlags;
     private long mStartTime;
     private float mLastX = 50;
     private float mLastY = 50;

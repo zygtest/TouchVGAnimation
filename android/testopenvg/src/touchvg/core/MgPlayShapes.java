@@ -39,6 +39,10 @@ public class MgPlayShapes {
     this(touchvgJNI.new_MgPlayShapes(path, GiTransform.getCPtr(xform), xform), true);
   }
 
+  public void close() {
+    touchvgJNI.MgPlayShapes_close(swigCPtr, this);
+  }
+
   public boolean loadFirstFile() {
     return touchvgJNI.MgPlayShapes_loadFirstFile(swigCPtr, this);
   }

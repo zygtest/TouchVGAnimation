@@ -21,7 +21,7 @@ public class PlayView1 extends GLSurfaceView1 {
     private MgShapeDoc mDoc;
     private MgShapes mDynShapes;
     private Thread mThread;
-    
+    private static int mFrameCount;
 
     public PlayView1(Context context) {
         super(context);
@@ -66,7 +66,8 @@ public class PlayView1 extends GLSurfaceView1 {
                 mGs.endPaint();
             }
         }
-        Log.d(TAG, "render draw:" + n1 + ", dyndraw:" + n2);
+        mFrameCount++;
+        Log.d(TAG, "render #" + mFrameCount + " draw:" + n1 + ", dyndraw:" + n2);
     }
     
     class LoadingThread implements Runnable {
@@ -102,6 +103,7 @@ public class PlayView1 extends GLSurfaceView1 {
                     }
                 }
             }
+            player.close();
         }
     }
 }

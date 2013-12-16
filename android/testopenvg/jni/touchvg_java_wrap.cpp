@@ -12910,6 +12910,17 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1MgPlayShapes(JNIEnv
 }
 
 
+SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_MgPlayShapes_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  MgPlayShapes *arg1 = (MgPlayShapes *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(MgPlayShapes **)&jarg1; 
+  (arg1)->close();
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_MgPlayShapes_1loadFirstFile(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   MgPlayShapes *arg1 = (MgPlayShapes *) 0 ;

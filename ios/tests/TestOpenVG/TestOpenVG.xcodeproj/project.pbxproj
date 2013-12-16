@@ -20,6 +20,7 @@
 		AE6800DD1855A29D00DB6CF6 /* TouchVG.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE6800DC1855A29D00DB6CF6 /* TouchVG.bundle */; };
 		AE815F351718EDCB006BC607 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE815F341718EDCB006BC607 /* QuartzCore.framework */; };
 		AEADC21F16EB570800484962 /* LargeView5.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEADC21E16EB570800484962 /* LargeView5.mm */; };
+		AEB49110185EF3BD002618AE /* record.zip in Resources */ = {isa = PBXBuildFile; fileRef = AEB4910F185EF3BD002618AE /* record.zip */; };
 		AEF2D52B160964BA00DDB7F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF2D52A160964BA00DDB7F2 /* UIKit.framework */; };
 		AEF2D52D160964BA00DDB7F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF2D52C160964BA00DDB7F2 /* Foundation.framework */; };
 		AEF2D52F160964BA00DDB7F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEF2D52E160964BA00DDB7F2 /* CoreGraphics.framework */; };
@@ -92,6 +93,7 @@
 		AE815F341718EDCB006BC607 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AEADC21D16EB570800484962 /* LargeView5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LargeView5.h; sourceTree = "<group>"; };
 		AEADC21E16EB570800484962 /* LargeView5.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LargeView5.mm; sourceTree = "<group>"; };
+		AEB4910F185EF3BD002618AE /* record.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = record.zip; path = ../../../android/testopenvg/assets/record.zip; sourceTree = "<group>"; };
 		AEF2D526160964BA00DDB7F2 /* TestOpenVG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOpenVG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF2D52A160964BA00DDB7F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AEF2D52C160964BA00DDB7F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -264,6 +266,7 @@
 		AEF2D56C1609B67200DDB7F2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AEB4910F185EF3BD002618AE /* record.zip */,
 				AE6800DC1855A29D00DB6CF6 /* TouchVG.bundle */,
 				AEF2D56D1609B67200DDB7F2 /* app57.png */,
 				AEF2D56E1609B67200DDB7F2 /* app72.png */,
@@ -354,6 +357,7 @@
 			files = (
 				AE6800DD1855A29D00DB6CF6 /* TouchVG.bundle in Resources */,
 				AEF2D56F1609B67200DDB7F2 /* app57.png in Resources */,
+				AEB49110185EF3BD002618AE /* record.zip in Resources */,
 				AEF2D5701609B67200DDB7F2 /* app72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,9 +28,13 @@ struct MgPlayShapes::Impl
     }
     
     ~Impl() {
-        frontDoc->release();
-        backDoc->release();
-        dynShapes->release();
+        close();
+    }
+    
+    void close() {
+        MgObject::release_pointer(frontDoc);
+        MgObject::release_pointer(backDoc);
+        MgObject::release_pointer(dynShapes);
     }
     
     void loadNextFile(MgShapes* shapes, MgStorage* s);
@@ -48,6 +52,11 @@ MgPlayShapes::MgPlayShapes(const char* path, GiTransform* xform)
 MgPlayShapes::~MgPlayShapes()
 {
     delete _im;
+}
+
+void MgPlayShapes::close()
+{
+    _im->close();
 }
 
 bool MgPlayShapes::loadFirstFile()

@@ -60,7 +60,8 @@
 
 - (void)dealloc
 {
-    [self tearDown];
+    if (_context)
+        [self tearDown];
     [super DEALLOC];
 }
 
@@ -141,7 +142,7 @@
 {
     BOOL success = FALSE;
     
-    if (_context) {
+    if (_context && colorRenderbuffer) {
         [EAGLContext setCurrentContext:_context];
         
         glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);

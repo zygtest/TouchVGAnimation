@@ -149,6 +149,12 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [_content viewWillAppear:animated];
+    [super viewWillAppear:animated];
+}
+
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController

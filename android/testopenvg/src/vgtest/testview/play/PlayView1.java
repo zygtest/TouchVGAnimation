@@ -4,6 +4,7 @@ package vgtest.testview.play;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import touchvg.core.GiGraphics;
 import touchvg.core.GiTransform;
 import touchvg.core.MgPlayShapes;
@@ -14,10 +15,12 @@ import vgtest.testview.canvas.GLSurfaceView1;
 
 public class PlayView1 extends GLSurfaceView1 {
     private static final String RECORD_PATH = "mnt/sdcard/TouchVG/rec";
+    private static final String TAG = "PlayView1";
     private GiTransform mXf = new GiTransform();
     private GiGraphics mGs = new GiGraphics(mXf);
     private MgShapeDoc mDoc;
     private MgShapes mDynShapes;
+    private Thread mThread;
     
 
     public PlayView1(Context context) {
@@ -27,7 +30,6 @@ public class PlayView1 extends GLSurfaceView1 {
         mXf.setResolution(dm.densityDpi);
         
         setRenderMode(RENDERMODE_WHEN_DIRTY);
-        new Thread(new LoadingThread()).start();
     }
     
     @Override
@@ -38,21 +40,33 @@ public class PlayView1 extends GLSurfaceView1 {
     
     @Override
     public void onPause() {
-        super.onPause();
         mGs.stopDrawing();
+        synchronized(mXf) {}
+        mThread = null;
+        super.onPause();
     }
 
     @Override
     protected void render(TestOpenVGCanvas tester) {
-        synchronized(mDoc) {
-            mGs.beginPaint(tester.beginPaint(true));
-            mDoc.draw(mGs);
-            mGs.endPaint();
-            
-            mGs.beginPaint(tester.beginPaint(false));
-            mDynShapes.draw(mGs);
-            mGs.endPaint();
+        if (mThread == null) {
+            mThread = new Thread(new LoadingThread());
+            mThread.start();
         }
+        if (mDoc == null) {
+            return;
+        }
+        int n1 = 0, n2 = 0;
+        synchronized(mXf) {
+            if (!mGs.isStopping() && mGs.beginPaint(tester.beginPaint(true))) {
+                n1 = mDoc.draw(mGs);
+                mGs.endPaint();
+            }
+            if (!mGs.isStopping() && mGs.beginPaint(tester.beginPaint(false))) {
+                n2 = mDynShapes.draw(mGs);
+                mGs.endPaint();
+            }
+        }
+        Log.d(TAG, "render draw:" + n1 + ", dyndraw:" + n2);
     }
     
     class LoadingThread implements Runnable {
@@ -69,7 +83,9 @@ public class PlayView1 extends GLSurfaceView1 {
                     int res = player.loadNextFile(index);
                     
                     if ((res & MgPlayShapes.FRAME_CHANGED) != 0) {
-                        synchronized(mDoc) {
+                        synchronized(mXf) {
+                            if (mGs.isStopping())
+                                break;
                             if ((res & MgPlayShapes.STATIC_CHANGED) != 0) {
                                 mDoc.release();
                                 mDoc = player.pickFrontDoc();

@@ -141,7 +141,7 @@ void MgPlayShapes::Impl::loadNextFile(MgShapes* shapes, MgStorage* s)
             if (sid == 0)
                 break;
             MgShape* sp = shapes->removeShape(sid, false);
-            MgObject::release(sp);
+            MgObject::release_pointer(sp);
         }
         s->readNode("delete", -1, true);
     }

@@ -16,9 +16,10 @@ int giGetScreenDpi();
 {
     [super DEALLOC];
     
-    MgObject::release(_doc);
-    MgObject::release(_dynShapes);
+    MgObject::release_pointer(_doc);
+    MgObject::release_pointer(_dynShapes);
     dispatch_release(_semaphore);
+    delete _gs;
     delete _xform;
 }
 
@@ -28,6 +29,7 @@ int giGetScreenDpi();
     if (self) {
         _xform = new GiTransform();
         _xform->setResolution(giGetScreenDpi());
+        _gs = new GiGraphics(_xform);
         _semaphore = dispatch_semaphore_create(0);
         
         [self performSelector:@selector(startPlayer) withObject:nil afterDelay:0.1];
@@ -43,10 +45,11 @@ int giGetScreenDpi();
 
 - (void)tearDown
 {
+    _gs->stopDrawing();
+    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
     [super tearDown];
-    dispatch_semaphore_signal(_semaphore);
-    MgObject::release(_doc);
-    MgObject::release(_dynShapes);
+    MgObject::release_pointer(_doc);
+    MgObject::release_pointer(_dynShapes);
 }
 
 - (void)startAnimation
@@ -56,15 +59,14 @@ int giGetScreenDpi();
 
 - (void)render
 {
-    GiGraphics gs(_xform);
-    
-    gs.beginPaint(_tester->beginPaint(true));
-    _doc->draw(gs);
-    gs.endPaint();
-    
-    gs.beginPaint(_tester->beginPaint(false));
-    _dynShapes->draw(gs);
-    gs.endPaint();
+    if (!_gs->isStopping() && _gs->beginPaint(_tester->beginPaint(true))) {
+        _doc->draw(*_gs);
+        _gs->endPaint();
+    }
+    if (!_gs->isStopping() && _gs->beginPaint(_tester->beginPaint(false))) {
+        _dynShapes->draw(*_gs);
+        _gs->endPaint();
+    }
 }
 
 - (void)play {
@@ -88,18 +90,19 @@ int giGetScreenDpi();
             _dynShapes = player.pickDynShapes();
             [self play];
             
-            for (int index = 1; ; index++) {
+            for (int index = 1; !_gs->isStopping(); index++) {
                 int res = player.loadNextFile(index);
                 
                 if (res & MgPlayShapes::FRAME_CHANGED) {
                     dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
-                    
+                    if (_gs->isStopping())
+                        break;
                     if (res & MgPlayShapes::STATIC_CHANGED) {
-                        MgObject::release(_doc);
+                        MgObject::release_pointer(_doc);
                         _doc = player.pickFrontDoc();
                     }
                     if (res & MgPlayShapes::DYNAMIC_CHANGED) {
-                        MgObject::release(_dynShapes);
+                        MgObject::release_pointer(_dynShapes);
                         _dynShapes = player.pickDynShapes();
                     }
                     [self play];
@@ -109,6 +112,7 @@ int giGetScreenDpi();
                 }
             }
         }
+        dispatch_semaphore_signal(_semaphore);
     });
 }
 

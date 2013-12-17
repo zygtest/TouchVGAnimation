@@ -14,13 +14,9 @@ int giGetScreenDpi();
 
 - (void)dealloc
 {
-    [super DEALLOC];
-    
-    MgObject::release_pointer(_doc);
-    MgObject::release_pointer(_dynShapes);
-    dispatch_release(_semaphore);
     delete _gs;
     delete _xform;
+    [super DEALLOC];
 }
 
 - (id)initWithFrame:(CGRect)frame withFlags:(int)t;
@@ -46,7 +42,11 @@ int giGetScreenDpi();
 - (void)tearDown
 {
     _gs->stopDrawing();
-    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+    if (_semaphore) {
+        dispatch_semaphore_wait(_semaphore,  10 * NSEC_PER_SEC);
+        dispatch_release(_semaphore);
+        _semaphore = NULL;
+    }
     [super tearDown];
     MgObject::release_pointer(_doc);
     MgObject::release_pointer(_dynShapes);

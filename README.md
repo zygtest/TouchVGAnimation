@@ -1,4 +1,4 @@
-# TouchVGAnimation - A vector drawing framework designed for animation using OpenVG
+# TouchVGAnimation
 
 ## Overview
 
@@ -27,7 +27,6 @@ This is an open source LGPL 2.1 licensed project that is in active development. 
 ## TODO
 
 - Implement image and text drawing using OpenVG in the canvas adapter.
-- Play animated shapes.
 
 ## Thanks
 

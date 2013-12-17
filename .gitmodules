@@ -4,3 +4,6 @@
 [submodule "thirdparty/TouchVGShape"]
 	path = thirdparty/TouchVGShape
 	url = http://git.oschina.net/rhcad/TouchVGShape.git
+[submodule "thirdparty/minizip"]
+	path = thirdparty/minizip
+	url = https://github.com/nmoinvaz/minizip.git

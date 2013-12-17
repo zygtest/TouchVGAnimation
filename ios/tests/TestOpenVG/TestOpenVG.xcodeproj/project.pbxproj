@@ -12,6 +12,14 @@
 		AE08F9F51858015B00F41C1E /* libMonkVG_iOS_OpenGL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE08F9F21858010E00F41C1E /* libMonkVG_iOS_OpenGL.a */; };
 		AE4842A3185A742F00264522 /* PlayerView1.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4842A2185A742F00264522 /* PlayerView1.mm */; };
 		AE490F1F185721EA004F70CC /* testcanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE490F1E185721EA004F70CC /* testcanvas.cpp */; };
+		AE4D6B841860573100A84546 /* ioapi_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B761860573100A84546 /* ioapi_buf.c */; };
+		AE4D6B851860573100A84546 /* ioapi_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B781860573100A84546 /* ioapi_mem.c */; };
+		AE4D6B861860573100A84546 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B7A1860573100A84546 /* ioapi.c */; };
+		AE4D6B871860573100A84546 /* iowin32.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B7C1860573100A84546 /* iowin32.c */; };
+		AE4D6B881860573100A84546 /* miniunz.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B7E1860573100A84546 /* miniunz.c */; };
+		AE4D6B891860573100A84546 /* minizip.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B7F1860573100A84546 /* minizip.c */; };
+		AE4D6B8A1860573100A84546 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B801860573100A84546 /* unzip.c */; };
+		AE4D6B8B1860573100A84546 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = AE4D6B821860573100A84546 /* zip.c */; };
 		AE4E6F0516129337006CAA5C /* GraphView5.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4E6F0316129337006CAA5C /* GraphView5.mm */; };
 		AE4E6F0616129337006CAA5C /* ViewFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE4E6F0416129337006CAA5C /* ViewFactory.mm */; };
 		AE66F609185A99F800A22FB2 /* libTouchVGShape.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE66F606185A99E200A22FB2 /* libTouchVGShape.a */; };
@@ -82,6 +90,21 @@
 		AE490F1B185721CB004F70CC /* gicanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gicanvas.h; path = ../../../thirdparty/TouchVGShape/core/include/canvas/gicanvas.h; sourceTree = "<group>"; };
 		AE490F1C185721DA004F70CC /* testcanvas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = testcanvas.h; path = ../../../thirdparty/TouchVGShape/core/include/test/testcanvas.h; sourceTree = "<group>"; };
 		AE490F1E185721EA004F70CC /* testcanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = testcanvas.cpp; path = ../../../thirdparty/TouchVGShape/core/src/test/testcanvas.cpp; sourceTree = "<group>"; };
+		AE4D6B751860573100A84546 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = ../../../thirdparty/minizip/crypt.h; sourceTree = "<group>"; };
+		AE4D6B761860573100A84546 /* ioapi_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi_buf.c; path = ../../../thirdparty/minizip/ioapi_buf.c; sourceTree = "<group>"; };
+		AE4D6B771860573100A84546 /* ioapi_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi_buf.h; path = ../../../thirdparty/minizip/ioapi_buf.h; sourceTree = "<group>"; };
+		AE4D6B781860573100A84546 /* ioapi_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi_mem.c; path = ../../../thirdparty/minizip/ioapi_mem.c; sourceTree = "<group>"; };
+		AE4D6B791860573100A84546 /* ioapi_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi_mem.h; path = ../../../thirdparty/minizip/ioapi_mem.h; sourceTree = "<group>"; };
+		AE4D6B7A1860573100A84546 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = ../../../thirdparty/minizip/ioapi.c; sourceTree = "<group>"; };
+		AE4D6B7B1860573100A84546 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = ../../../thirdparty/minizip/ioapi.h; sourceTree = "<group>"; };
+		AE4D6B7C1860573100A84546 /* iowin32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = iowin32.c; path = ../../../thirdparty/minizip/iowin32.c; sourceTree = "<group>"; };
+		AE4D6B7D1860573100A84546 /* iowin32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iowin32.h; path = ../../../thirdparty/minizip/iowin32.h; sourceTree = "<group>"; };
+		AE4D6B7E1860573100A84546 /* miniunz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = miniunz.c; path = ../../../thirdparty/minizip/miniunz.c; sourceTree = "<group>"; };
+		AE4D6B7F1860573100A84546 /* minizip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = minizip.c; path = ../../../thirdparty/minizip/minizip.c; sourceTree = "<group>"; };
+		AE4D6B801860573100A84546 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = ../../../thirdparty/minizip/unzip.c; sourceTree = "<group>"; };
+		AE4D6B811860573100A84546 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = ../../../thirdparty/minizip/unzip.h; sourceTree = "<group>"; };
+		AE4D6B821860573100A84546 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = ../../../thirdparty/minizip/zip.c; sourceTree = "<group>"; };
+		AE4D6B831860573100A84546 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = ../../../thirdparty/minizip/zip.h; sourceTree = "<group>"; };
 		AE4E6F0216129337006CAA5C /* GraphView5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView5.h; sourceTree = "<group>"; };
 		AE4E6F0316129337006CAA5C /* GraphView5.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphView5.mm; sourceTree = "<group>"; };
 		AE4E6F0416129337006CAA5C /* ViewFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewFactory.mm; sourceTree = "<group>"; };
@@ -171,6 +194,7 @@
 				AE4E6F0316129337006CAA5C /* GraphView5.mm */,
 				AE4E6F0416129337006CAA5C /* ViewFactory.mm */,
 				AE66F619185AB0EF00A22FB2 /* Play */,
+				AE4D6B741860562A00A84546 /* minizip */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -181,6 +205,28 @@
 				AE08F9F21858010E00F41C1E /* libMonkVG_iOS_OpenGL.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AE4D6B741860562A00A84546 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D6B751860573100A84546 /* crypt.h */,
+				AE4D6B761860573100A84546 /* ioapi_buf.c */,
+				AE4D6B771860573100A84546 /* ioapi_buf.h */,
+				AE4D6B781860573100A84546 /* ioapi_mem.c */,
+				AE4D6B791860573100A84546 /* ioapi_mem.h */,
+				AE4D6B7A1860573100A84546 /* ioapi.c */,
+				AE4D6B7B1860573100A84546 /* ioapi.h */,
+				AE4D6B7C1860573100A84546 /* iowin32.c */,
+				AE4D6B7D1860573100A84546 /* iowin32.h */,
+				AE4D6B7E1860573100A84546 /* miniunz.c */,
+				AE4D6B7F1860573100A84546 /* minizip.c */,
+				AE4D6B801860573100A84546 /* unzip.c */,
+				AE4D6B811860573100A84546 /* unzip.h */,
+				AE4D6B821860573100A84546 /* zip.c */,
+				AE4D6B831860573100A84546 /* zip.h */,
+			);
+			name = minizip;
 			sourceTree = "<group>";
 		};
 		AE66F602185A99E200A22FB2 /* Products */ = {
@@ -369,8 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE4D6B841860573100A84546 /* ioapi_buf.c in Sources */,
 				AEF2D53B160964BA00DDB7F2 /* AppDelegate.m in Sources */,
 				AEF2D53E160964BA00DDB7F2 /* MasterViewController.mm in Sources */,
+				AE4D6B881860573100A84546 /* miniunz.c in Sources */,
 				AE001EA81852815C00B4799D /* GiOpenVGCanvas.cpp in Sources */,
 				AE66F620185AB43800A22FB2 /* GiDpiUtil.mm in Sources */,
 				AE490F1F185721EA004F70CC /* testcanvas.cpp in Sources */,
@@ -378,11 +426,17 @@
 				AEF2D5B01609BF7D00DDB7F2 /* main.m in Sources */,
 				AE08F9E81857FEFD00F41C1E /* testvgcanvas.cpp in Sources */,
 				AE4E6F0516129337006CAA5C /* GraphView5.mm in Sources */,
+				AE4D6B8B1860573100A84546 /* zip.c in Sources */,
 				AE4E6F0616129337006CAA5C /* ViewFactory.mm in Sources */,
 				AE4842A3185A742F00264522 /* PlayerView1.mm in Sources */,
+				AE4D6B851860573100A84546 /* ioapi_mem.c in Sources */,
+				AE4D6B891860573100A84546 /* minizip.c in Sources */,
+				AE4D6B8A1860573100A84546 /* unzip.c in Sources */,
 				AE66F60B185A9B3A00A22FB2 /* playshapes.cpp in Sources */,
 				AEFA4A621850525F008A9E3B /* EAGLView.m in Sources */,
+				AE4D6B861860573100A84546 /* ioapi.c in Sources */,
 				AEADC21F16EB570800484962 /* LargeView5.mm in Sources */,
+				AE4D6B871860573100A84546 /* iowin32.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

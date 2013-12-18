@@ -142,7 +142,7 @@
 {
     BOOL success = FALSE;
     
-    if (_context && colorRenderbuffer) {
+    if (_context && colorRenderbuffer && defaultFramebuffer) {
         [EAGLContext setCurrentContext:_context];
         
         glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);

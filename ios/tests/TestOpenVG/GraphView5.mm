@@ -36,10 +36,16 @@
     }
 }
 
+- (BOOL)isDrawing
+{
+    return _lastEndTime > 1.0e10;
+}
+
 - (void)drawFrame
 {
     BOOL recreated = [self setFramebuffer];
     
+    _lastEndTime = 1.0e20;
     if (recreated) {
         _tester->resize(self.framebufferWidth, self.framebufferHeight);
     }
@@ -48,11 +54,11 @@
     glClear(GL_COLOR_BUFFER_BIT);
     
     bool dynzoom = (_flags & 0x10000) != 0;
-    _tester->prepareToDraw(dynzoom, (CACurrentMediaTime() - _startTime) * 1000);
+    _tester->prepareToDraw(dynzoom, (CACurrentMediaTime() - _startTime) * 1000.0);
     
     [self render];
-	
     [self presentFramebuffer];
+    _lastEndTime = CACurrentMediaTime();
 }
 
 - (void)render

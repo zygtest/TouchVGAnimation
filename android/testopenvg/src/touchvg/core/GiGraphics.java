@@ -63,8 +63,12 @@ public class GiGraphics {
     return touchvgJNI.GiGraphics_isStopping(swigCPtr, this);
   }
 
+  public void stopDrawing(boolean stopped) {
+    touchvgJNI.GiGraphics_stopDrawing__SWIG_0(swigCPtr, this, stopped);
+  }
+
   public void stopDrawing() {
-    touchvgJNI.GiGraphics_stopDrawing(swigCPtr, this);
+    touchvgJNI.GiGraphics_stopDrawing__SWIG_1(swigCPtr, this);
   }
 
   public Box2d getClipModel() {

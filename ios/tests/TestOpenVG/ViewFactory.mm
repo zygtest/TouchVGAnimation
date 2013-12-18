@@ -14,10 +14,10 @@ static UIViewController *_tmpController = nil;
 
 @implementation GLViewController
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [(EAGLView *)self.view startAnimation];
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -72,6 +72,7 @@ static void gatherTestView(NSMutableArray *arr, NSUInteger index, CGRect frame)
 {
     NSUInteger i = 0;
     
+    addView5(arr, i, index, @"PlayerView1 from ", 0x40000, frame);
     addView5(arr, i, index, @"PlayerView1", 0x40000, frame);
     addLargeView5(arr, i, index, @"PlayerView1 in large view", 0x40000, frame);
     

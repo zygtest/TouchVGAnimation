@@ -14,6 +14,7 @@ int giGetScreenDpi();
 
 - (void)dealloc
 {
+    dispatch_release(_semaphore);
     delete _gs;
     delete _xform;
     [super DEALLOC];
@@ -26,17 +27,16 @@ int giGetScreenDpi();
         _xform = new GiTransform();
         _xform->setResolution(giGetScreenDpi());
         _gs = new GiGraphics(_xform);
-        _semaphore = dispatch_semaphore_create(0);
-        
-        [self performSelector:@selector(startPlayer) withObject:nil afterDelay:0.1];
     }
     return self;
 }
 
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
-    _xform->setWndSize(self.bounds.size.width, self.bounds.size.height);
+    if (![self isDrawing]) {
+        [super layoutSubviews];
+        _xform->setWndSize(self.bounds.size.width, self.bounds.size.height);
+    }
 }
 
 - (void)tearDown
@@ -44,8 +44,8 @@ int giGetScreenDpi();
     _gs->stopDrawing();
     if (_semaphore) {
         dispatch_semaphore_wait(_semaphore,  10 * NSEC_PER_SEC);
-        dispatch_release(_semaphore);
-        _semaphore = NULL;
+        if (CACurrentMediaTime() - _lastEndTime < 1000.0)
+            giSleep(500);
     }
     [super tearDown];
     MgObject::release_pointer(_doc);
@@ -54,16 +54,8 @@ int giGetScreenDpi();
 
 - (void)startAnimation
 {
-    _gs->stopDrawing(false);
+    _semaphore = dispatch_semaphore_create(0);
     [self startPlayer];
-}
-
-- (void)stopAnimation
-{
-    _gs->stopDrawing();
-    if (_semaphore) {
-        dispatch_semaphore_wait(_semaphore,  10 * NSEC_PER_SEC);
-    }
 }
 
 - (void)render

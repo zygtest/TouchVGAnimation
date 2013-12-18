@@ -433,7 +433,8 @@ public class touchvgJNI {
   public final static native boolean GiGraphics_isDrawing(long jarg1, GiGraphics jarg1_);
   public final static native boolean GiGraphics_isPrint(long jarg1, GiGraphics jarg1_);
   public final static native boolean GiGraphics_isStopping(long jarg1, GiGraphics jarg1_);
-  public final static native void GiGraphics_stopDrawing(long jarg1, GiGraphics jarg1_);
+  public final static native void GiGraphics_stopDrawing__SWIG_0(long jarg1, GiGraphics jarg1_, boolean jarg2);
+  public final static native void GiGraphics_stopDrawing__SWIG_1(long jarg1, GiGraphics jarg1_);
   public final static native long GiGraphics_getClipModel(long jarg1, GiGraphics jarg1_);
   public final static native long GiGraphics_getClipWorld(long jarg1, GiGraphics jarg1_);
   public final static native long GiGraphics_getClipBox(long jarg1, GiGraphics jarg1_, long jarg2, RECT_2D jarg2_);

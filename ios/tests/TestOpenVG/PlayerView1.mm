@@ -54,7 +54,16 @@ int giGetScreenDpi();
 
 - (void)startAnimation
 {
-    // not use CADisplayLink
+    _gs->stopDrawing(false);
+    [self startPlayer];
+}
+
+- (void)stopAnimation
+{
+    _gs->stopDrawing();
+    if (_semaphore) {
+        dispatch_semaphore_wait(_semaphore,  10 * NSEC_PER_SEC);
+    }
 }
 
 - (void)render

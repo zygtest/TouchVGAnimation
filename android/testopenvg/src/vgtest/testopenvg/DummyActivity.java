@@ -29,9 +29,11 @@ public class DummyActivity extends Activity {
             e.printStackTrace();
         }
         
-        this.setContentView(view);
-        this.setTitle(bundle.getString("title"));
-        mView = view;
+        if (view != null) {
+            this.setContentView(view);
+            this.setTitle(bundle.getString("title"));
+            mView = view;
+        }
     }
     
     @Override

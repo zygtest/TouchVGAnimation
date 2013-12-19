@@ -615,6 +615,7 @@ public class touchvgJNI {
   public final static native void MgShapes_copyShapes__SWIG_0(long jarg1, MgShapes jarg1_, long jarg2, MgShapes jarg2_, boolean jarg3);
   public final static native void MgShapes_copyShapes__SWIG_1(long jarg1, MgShapes jarg1_, long jarg2, MgShapes jarg2_);
   public final static native long MgShapes_addShape(long jarg1, MgShapes jarg1_, long jarg2, MgShape jarg2_);
+  public final static native boolean MgShapes_updateShape(long jarg1, MgShapes jarg1_, long jarg2, MgShape jarg2_);
   public final static native long MgShapes_removeShape__SWIG_0(long jarg1, MgShapes jarg1_, int jarg2, boolean jarg3);
   public final static native long MgShapes_removeShape__SWIG_1(long jarg1, MgShapes jarg1_, int jarg2);
   public final static native long MgShapes_moveTo(long jarg1, MgShapes jarg1_, int jarg2, long jarg3, MgShapes jarg3_);

@@ -155,6 +155,10 @@ public class MgShapes extends MgObject {
     return (cPtr == 0) ? null : new MgShape(cPtr, false);
   }
 
+  public boolean updateShape(MgShape shape) {
+    return touchvgJNI.MgShapes_updateShape(swigCPtr, this, MgShape.getCPtr(shape), shape);
+  }
+
   public MgShape removeShape(int sid, boolean skipLockedShape) {
     long cPtr = touchvgJNI.MgShapes_removeShape__SWIG_0(swigCPtr, this, sid, skipLockedShape);
     return (cPtr == 0) ? null : new MgShape(cPtr, false);

@@ -7693,49 +7693,6 @@ SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_GiContext_1setFillAlpha(JNI
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_touchvg_core_touchvgJNI_GiContext_1isAutoFillColor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jboolean jresult = 0 ;
-  GiContext *arg1 = (GiContext *) 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(GiContext **)&jarg1; 
-  result = (bool)((GiContext const *)arg1)->isAutoFillColor();
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_GiContext_1setAutoFillColor(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
-  GiContext *arg1 = (GiContext *) 0 ;
-  bool arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(GiContext **)&jarg1; 
-  arg2 = jarg2 ? true : false; 
-  (arg1)->setAutoFillColor(arg2);
-}
-
-
-SWIGEXPORT jint JNICALL Java_touchvg_core_touchvgJNI_GiContext_1getType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  GiContext *arg1 = (GiContext *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(GiContext **)&jarg1; 
-  result = (int)((GiContext const *)arg1)->getType();
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void JNICALL Java_touchvg_core_touchvgJNI_delete_1GiContext(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   GiContext *arg1 = (GiContext *) 0 ;
   

@@ -421,9 +421,6 @@ public class touchvgJNI {
   public final static native void GiContext_setFillARGB(long jarg1, GiContext jarg1_, int jarg2);
   public final static native int GiContext_getFillAlpha(long jarg1, GiContext jarg1_);
   public final static native void GiContext_setFillAlpha(long jarg1, GiContext jarg1_, int jarg2);
-  public final static native boolean GiContext_isAutoFillColor(long jarg1, GiContext jarg1_);
-  public final static native void GiContext_setAutoFillColor(long jarg1, GiContext jarg1_, boolean jarg2);
-  public final static native int GiContext_getType(long jarg1, GiContext jarg1_);
   public final static native void delete_GiContext(long jarg1);
   public final static native long new_GiGraphics__SWIG_0(long jarg1, GiTransform jarg1_);
   public final static native long new_GiGraphics__SWIG_1(long jarg1, GiGraphics jarg1_);
